@@ -1,7 +1,7 @@
 const Mock = require('mockjs')
 const domain = 'http://job/api'
 
-const post_data = req => {
+const login_data = req => {
 
     let code = 200
     let data = {
@@ -15,4 +15,4 @@ const post_data = req => {
     }
 }
 
-Mock.mock(`${domain}/login`, 'post', post_data)
+Mock.mock(`${domain}/login`, 'post', login_data)
