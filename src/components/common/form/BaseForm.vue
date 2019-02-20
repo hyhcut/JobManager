@@ -16,20 +16,20 @@ export default {
         form: Object
     },
     methods:{
-        submit(callback){
-            this.$refs[this.form.name].validate((valid) => {
-                if (valid) {
-                    this.$ajax.post(this.form.url, this.form.data)
-                    .then((res) => {
-                        callback(res.data);
-                    }).catch((err) => {
-                        callback(err);
-                    });
-                } else {
-                    callback(false);
-                }
-            });
-        },
+        // submit(callback){
+        //     this.$refs[this.form.name].validate((valid) => {
+        //         if (valid) {
+        //             this.$ajax.post(this.form.url, this.form.data)
+        //             .then((res) => {
+        //                 callback(res.data);
+        //             }).catch((err) => {
+        //                 callback(err);
+        //             });
+        //         } else {
+        //             callback(false);
+        //         }
+        //     });
+        // },
         reset(){
             this.$refs[this.form.name].resetFields();
         }

@@ -21,9 +21,10 @@ export default new Router({
           path: '/project',
           name: 'project',
           component: ProjectIndex,
+          redirect: '/project/list',
           children:[
             {
-              path: '',
+              path: 'list',
               component: ProjectList
             }
           ]

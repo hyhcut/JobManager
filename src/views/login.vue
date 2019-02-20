@@ -6,7 +6,7 @@
         <el-row type="flex" justify="center">
             <el-col :span="8">
                 <j-form :form="form" ref="login"></j-form>
-                <el-button type="primary" @click="login(form.name)">登录</el-button>
+                <el-button type="primary" @click="login">登录</el-button>
             </el-col>
         </el-row>
     </div>
@@ -56,28 +56,33 @@ export default {
         ...mapActions('login', [
             'logIn'
         ]),
-        login(form_name){
-            this.$refs[form_name].submit(this.login_callback);
-        },
-        login_callback(data){
-            if (data.code === 200) {
+        login(){
+            this.$ajax.post(this.form.url, this.form.data)
+            .then((res) => {
+                if (res.data.code === 200) {
                 // this.$store.dispatch('login/logIn', data.data);
-                this.logIn(data.data);
+                this.logIn(res.data.data);
                 this.$cookies.set("login", "on", 30 * 60);
                 this.$notify.success({
                     title: '操作成功',
-                    message: data.message,
+                    message: res.data.message,
                     duration: 1500
                 })
-                console.log(this.userId);
                 this.$router.push('/');
             } else {
                 this.$notify.error({
                     title: '操作失败',
-                    message: data.message,
+                    message: res.data.message,
                     duration: 1500
                 })
             }
+            }).catch((err) => {
+                this.$notify.error({
+                    title: '网络错误',
+                    message: err,
+                    duration: 1500
+                })
+            });
         }
     }
 }
