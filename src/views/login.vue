@@ -1,6 +1,10 @@
 <template>
     <div id="login">
-        <j-form :form="form"></j-form>
+        <el-row type="flex" justify="center">
+            <el-col :span="8">
+                <j-form :form="form"></j-form>
+            </el-col>
+        </el-row>
     </div>
 </template>
 
@@ -19,23 +23,22 @@ export default {
                 label_width: '80px',
                 unit_list:[
                     {
-                        name: 'test',
-                        type: 2,
-                        placeholder: '请选择',
-                        option_list:[
-                            {
-                                label: '测试1',
-                                value: '测试1'
-                            },
-                            {
-                                label: '测试2',
-                                value: '测试2'
-                            }
-                        ]
+                        name: 'username',
+                        label: '用户名',
+                        type: 1,
+                        placeholder: '用户名',
+                    },
+                    {
+                        name: 'password',
+                        label: '密码',
+                        type: 1,
+                        input_type: 'password',
+                        placeholder: '密码'
                     }
                 ],
                 data:{
-                    test: ''
+                    username: '',
+                    password: ''
                 }
             }
         }
