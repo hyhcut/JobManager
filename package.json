@@ -12,7 +12,8 @@
     "mockjs": "^1.0.1-beta3",
     "vue": "^2.5.22",
     "vue-cookies": "^1.5.12",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.4.0",
