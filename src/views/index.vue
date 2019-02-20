@@ -19,7 +19,7 @@
                 <el-main class="main">
                     <el-row>
                         <el-col :span="4">
-                        <!-- <m-menu :menu-list="menu_list"></m-menu> -->
+                        <level-one-menu :menu-list="menu_list"></level-one-menu>
                         </el-col>
                         <el-col :span="20">
                         <router-view></router-view>
@@ -39,8 +39,23 @@
 </template>
 
 <script>
+import LevelOneMenu from '@/components/common/menu/LevelOneMenu.vue';
 
 export default {
+    components:{
+        'level-one-menu': LevelOneMenu
+    },
+    data(){
+        return{
+            menu_list:[
+                {
+                    label: '项目',
+                    icon: 'el-icon-tickets',
+                    url: '/project'
+                }
+            ]
+        }
+    },
     methods:{
         logout(){
             this.$cookies.set('login', 'off');

@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Index from './views/index.vue'
 import Login from './views/login.vue'
+import ProjectIndex from './views/project/index.vue'
+import ProjectList from './views/project/list.vue'
 
 Vue.use(Router)
 
@@ -13,7 +15,20 @@ export default new Router({
       component: Index,
       meta:{
         requiresAuth: true
-      }
+      },
+      children:[
+        {
+          path: '/project',
+          name: 'project',
+          component: ProjectIndex,
+          children:[
+            {
+              path: '',
+              component: ProjectList
+            }
+          ]
+        }
+      ]
       // component: Home
     },
     {
